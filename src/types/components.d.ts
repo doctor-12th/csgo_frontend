@@ -11,10 +11,10 @@ declare module 'vue' {
     ElButton: typeof import('element-plus/es')['ElButton']
     ElMenu: typeof import('element-plus/es')['ElMenu']
     ElMenuItem: typeof import('element-plus/es')['ElMenuItem']
-    HelloWorld: typeof import('./../components/HelloWorld.vue')['default']
+    ElScrollbar: typeof import('element-plus/es')['ElScrollbar']
+    ElSubMenu: typeof import('element-plus/es')['ElSubMenu']
     IEpSuccessFilled: typeof import('~icons/ep/success-filled')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    SvgIcon: typeof import('./../components/SvgIcon/index.vue')['default']
   }
 }

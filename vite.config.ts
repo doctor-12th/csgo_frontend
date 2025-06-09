@@ -14,7 +14,7 @@ import svgLoader from "vite-svg-loader"
 const pathSrc = path.resolve(__dirname, './src')
 // https://vite.dev/config/
 export default ({ mode }: ConfigEnv):UserConfig =>{
-  const env = loadEnv(mode, process.cwd())
+  const env = loadEnv(mode, process.cwd(),"") as ImportMetaEnv
   return {
     plugins: [
       vue(),

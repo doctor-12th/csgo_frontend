@@ -1,6 +1,6 @@
 import type { RouteRecordRaw } from "vue-router"
 import { createRouter,createWebHashHistory } from "vue-router"
-
+import { registerNavigationGuard } from "./guard"
 
 const Layouts = () => import("@/layout/index.vue")
 
@@ -15,6 +15,12 @@ export const constantRoutes: RouteRecordRaw[] = [
     meta: {
       hidden: true
     },
+    children: [
+      {
+        path: "path(.*)",
+        component: () => import("@/pages/redirect/index.vue")
+      }
+    ]
   },
   {
     path: "/403",
@@ -35,6 +41,7 @@ export const constantRoutes: RouteRecordRaw[] = [
     path: "/",
     component: Layouts,
     redirect: "/monitor",
+   
     children: [
       {
         path: "monitor",
@@ -42,7 +49,7 @@ export const constantRoutes: RouteRecordRaw[] = [
         name: "Monitor",
         meta: {
           title: "首页",
-          svgIcon: "monitor",
+          svgIcon: "manager",
           affix: true
         }
       }
@@ -50,14 +57,22 @@ export const constantRoutes: RouteRecordRaw[] = [
   },
   {
     path: "/manager",
-    component: () => import("@/pages/DataManager/index.vue"),
-    name: "Manager",
-    meta: {
-      title: "数据管理",
-      svgIcon: "manager",
-      affix: true
-    }
-  }
+    component: Layouts,
+    redirect: "/manager/manager",
+ 
+    children: [
+      {
+        path: "manager",
+        component: () => import("@/pages/DataManager/index.vue"),
+        name: "Manager",
+        meta: {
+          title: "数据管理",
+          svgIcon: "manager",
+          affix: true
+        }
+      }
+    ]
+  },
 ]
 
 /**
@@ -116,7 +131,7 @@ export function resetRouter() {
     // 注意：所有动态路由路由必须带有 Name 属性，否则可能会不能完全重置干净
     router.getRoutes().forEach((route) => {
       const { name, meta } = route
-      if (name && meta.roles?.length) {
+      if (name) {
         router.hasRoute(name) && router.removeRoute(name)
       }
     })
@@ -127,4 +142,4 @@ export function resetRouter() {
 }
 
 // 注册路由导航守卫
-// registerNavigationGuard(router)
+registerNavigationGuard(router)
