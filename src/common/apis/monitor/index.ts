@@ -56,3 +56,4 @@ export const checkMachineStatus = (machineId: string) => {
     params: { machine_id: machineId }
   })
 }
+

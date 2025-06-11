@@ -30,3 +30,8 @@ export interface MachineStatus {
 
 // 检查机器列表的响应类型
 export type MachineListResponse = ApiResponseData<MachineStatus[]>
+
+
+
+
+

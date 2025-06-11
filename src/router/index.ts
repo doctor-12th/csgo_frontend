@@ -48,7 +48,7 @@ export const constantRoutes: RouteRecordRaw[] = [
         component: () => import("@/pages/monitor/index.vue"),
         name: "Monitor",
         meta: {
-          title: "首页",
+          title: "监控",
           svgIcon: "manager",
           affix: true
         }
@@ -67,6 +67,24 @@ export const constantRoutes: RouteRecordRaw[] = [
         name: "Manager",
         meta: {
           title: "数据管理",
+          svgIcon: "manager",
+          affix: true
+        }
+      }
+    ]
+  },
+  {
+    path: "/vac",
+    component: Layouts,
+    redirect: "/vac/vac",
+ 
+    children: [
+      {
+        path: "vac",
+        component: () => import("@/pages/vac/index.vue"),
+        name: "VAC",
+        meta: {
+          title: "异常账号信息",
           svgIcon: "manager",
           affix: true
         }

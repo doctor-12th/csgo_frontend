@@ -23,4 +23,14 @@ export interface AbnormalAccount {
 // API响应类型
 export type WeeklyCompletionResponse = ApiResponseData<WeeklyCompletion>
 export type OwnerCompletionListResponse = ApiResponseData<OwnerCompletion[]>
-export type AbnormalAccountsResponse = ApiResponseData<AbnormalAccount[]>
+
+// 分页响应数据结构
+export interface PaginatedResponse<T> {
+  data: T[]
+  total: number
+  page: number
+  per_page: number
+}
+
+// 更新异常账号响应类型
+export type AbnormalAccountsResponse = ApiResponseData<PaginatedResponse<AbnormalAccount>>
