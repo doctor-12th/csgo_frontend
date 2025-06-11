@@ -22,10 +22,7 @@ export interface MonitorResponse {
 // 单个机器状态信息
 export interface MachineStatus {
   machine_id: string
-  is_online: boolean
-  last_heartbeat: number
-  cpu_usage?: number
-  memory_usage?: number
+  is_active: boolean
 }
 
 // 检查机器列表的响应类型
