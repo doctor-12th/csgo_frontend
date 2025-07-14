@@ -14,9 +14,6 @@ export const sendInstruction = (data: SendInstructionRequest) => {
     const formData = new FormData()
     formData.append('machine_id', data.machine_id)
     formData.append('command', data.command)
-    if (data.parameters) {
-      formData.append('parameters', data.parameters)
-    }
   
     return request<SendInstructionResponse>({
       url: '/instruction/send_instruction',
